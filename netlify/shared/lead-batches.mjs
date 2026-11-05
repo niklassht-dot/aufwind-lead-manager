@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-05-blumencafe-ruegen",
+    leads: [
+      {
+        company: "Blumencafé Rügen – Sök di wat ut!",
+        contact: "Christin Kieck",
+        phone: "038391 769932",
+        website: "https://www.blumencafe-ruegen.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 05.11.2026: „Ist dies mit Kosten für mich verbunden?“ → kurz antworten (Entwurf kostenlos & unverbindlich) und Entwurf schicken.\nCafé + Floristik: hausgemachte Kuchen/Torten, Baumkuchen aus eigenem Ofen, Aufstriche & Säfte aus regionalem Obst, Sträuße/Gestecke/Kränze, Hochzeitsfloristik, Sommergarten mit Tieren.\nGerhart-Hauptmann-Str. 6, 18556 Wiek (Rügen)\nE-Mail: info@blumencafe-ruegen.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-05-ruegen-architektur",
     leads: [
       {
