@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Anrufliste / Follow-up | Aufwind Studio</title>
+  <meta name="description" content="Interne Lead- und Follow-up-Liste von Aufwind Studio.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#f7f8f7">
+  <link rel="icon" href="assets/img/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Anrufliste">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body class="is-locked">
+
+  <!-- PIN-Sperre -->
+  <div class="lock-screen" id="lockScreen">
+    <form class="lock-card" id="lockForm" autocomplete="off">
+      <span class="brand">Aufwind Studio</span>
+      <h1 class="lock-title">Anrufliste</h1>
+      <label class="lock-label" for="pinInput">PIN eingeben</label>
+      <input type="password" id="pinInput" class="input lock-input" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" aria-describedby="pinError">
+      <p class="lock-error" id="pinError" hidden>Falscher PIN</p>
+      <label class="lock-remember">
+        <input type="checkbox" id="rememberPin" checked>
+        <span>Auf diesem Gerät angemeldet bleiben</span>
+      </label>
+      <button type="submit" class="btn btn--primary lock-btn">Entsperren</button>
+    </form>
+  </div>
+
+  <div class="app" id="app">
+
+    <!-- Kopfbereich -->
+    <header class="app-header">
+      <div class="app-header__title">
+        <span class="brand">Aufwind Studio</span>
+        <h1>Anrufliste / Follow-up</h1>
+      </div>
+      <div class="app-header__side">
+        <div class="lead-summary" id="leadSummary" aria-live="polite"></div>
+        <button type="button" class="btn btn--ghost btn--sm" id="pushBtn" hidden>Benachrichtigungen</button>
+        <span class="sync-status" id="syncStatus" data-state="ok" role="status" aria-live="polite">Synchronisiert</span>
+        <button type="button" class="btn btn--ghost btn--sm" id="lockBtn">Sperren</button>
+      </div>
+    </header>
+
+    <!-- Werkzeugleiste -->
+    <div class="toolbar">
+      <button type="button" class="btn btn--primary toolbar__add" id="addLeadBtn">+ Lead hinzufügen</button>
+      <button type="button" class="btn btn--ghost toolbar__img" id="addFromImageBtn">📷 Lead aus Bild</button>
+
+      <div class="toolbar__filters">
+        <label class="sr-only" for="searchInput">Suche</label>
+        <input type="search" id="searchInput" class="input input--search" placeholder="Firma, Kontakt oder Telefonnummer suchen…" autocomplete="off">
+
+        <label class="sr-only" for="statusFilter">Status filtern</label>
+        <select id="statusFilter" class="input input--select">
+          <option value="">Alle Status</option>
+        </select>
+
+        <label class="sr-only" for="draftFilter">Entwurf filtern</label>
+        <select id="draftFilter" class="input input--select">
+          <option value="">Alle Entwürfe</option>
+          <option value="missing">Entwurf machen</option>
+          <option value="present">Entwurf vorhanden</option>
+        </select>
+
+        <label class="sr-only" for="followupFilter">Follow-up filtern</label>
+        <select id="followupFilter" class="input input--select">
+          <option value="">Alle Follow-ups</option>
+          <option value="today">Heute</option>
+          <option value="overdue">Überfällig</option>
+          <option value="week">Diese Woche</option>
+          <option value="none">Ohne Termin</option>
+        </select>
+
+        <label class="sr-only" for="sortSelect">Sortieren</label>
+        <select id="sortSelect" class="input input--select">
+          <option value="">Sortierung: Standard</option>
+          <option value="createdAt:-1">Neueste zuerst (hinzugefügt)</option>
+          <option value="createdAt:1">Älteste zuerst (hinzugefügt)</option>
+          <option value="company:1">Firma A–Z</option>
+          <option value="followUpDate:1">Nächster Termin</option>
+        </select>
+
+        <div class="dropdown" id="dataDropdown">
+          <button type="button" class="btn btn--ghost" id="dataBtn" aria-haspopup="true" aria-expanded="false">Daten <span aria-hidden="true" class="caret">▾</span></button>
+          <div class="menu menu--right" id="dataMenu" role="menu" hidden>
+            <button type="button" role="menuitem" data-data="export-json">Als JSON exportieren</button>
+            <button type="button" role="menuitem" data-data="export-csv">Als CSV exportieren</button>
+            <div class="menu__sep"></div>
+            <button type="button" role="menuitem" data-data="import-json">JSON importieren</button>
+          </div>
+          <input type="file" id="importInput" accept="application/json,.json" hidden>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tages-To-do-Liste -->
+    <section class="today" id="todayPanel" aria-label="Heute zu tun"></section>
+
+    <!-- Desktop: Tabelle -->
+    <div class="table-wrap">
+      <table class="lead-table">
+        <thead>
+          <tr>
+            <th class="col-nr" scope="col">Nr</th>
+            <th class="col-company" scope="col"><button type="button" class="sort-btn" data-sort="company">Firma / Kontakt<span class="sort-ind" aria-hidden="true"></span></button></th>
+            <th class="col-phone" scope="col">Telefon</th>
+            <th class="col-web" scope="col">Website</th>
+            <th class="col-status" scope="col"><button type="button" class="sort-btn" data-sort="status">Status<span class="sort-ind" aria-hidden="true"></span></button></th>
+            <th class="col-followup" scope="col"><button type="button" class="sort-btn" data-sort="followUpDate">Follow-up<span class="sort-ind" aria-hidden="true"></span></button></th>
+            <th class="col-notes" scope="col">Notizen</th>
+            <th class="col-actions" scope="col"><span class="sr-only">Aktionen</span></th>
+          </tr>
+        </thead>
+        <tbody id="leadTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Mobile: Liste -->
+    <ul class="lead-list" id="leadList"></ul>
+
+    <p class="empty-state" id="emptyState" hidden></p>
+
+    <p class="footnote">Alle Änderungen werden automatisch gespeichert und für alle synchronisiert. Zusätzliche Sicherung: <em>Daten → Als JSON exportieren</em>.</p>
+  </div>
+
+  <!-- Mobile: Sticky-Button -->
+  <button type="button" class="fab" id="fabAddBtn">+ Lead</button>
+
+  <!-- Zeilen-Menü (…) -->
+  <div class="menu menu--floating" id="rowMenu" role="menu" hidden>
+    <button type="button" role="menuitem" data-row-action="edit">Bearbeiten</button>
+    <button type="button" role="menuitem" data-row-action="done">Als abgelehnt markieren</button>
+    <button type="button" role="menuitem" data-row-action="followup">Follow-up setzen</button>
+    <div class="menu__sep"></div>
+    <button type="button" role="menuitem" data-row-action="delete" class="is-danger">Löschen</button>
+  </div>
+
+  <!-- Sidepanel -->
+  <div class="overlay" id="panelOverlay" hidden></div>
+  <aside class="lead-panel" id="leadPanel" role="dialog" aria-modal="true" aria-labelledby="panelTitle" aria-hidden="true">
+    <form id="leadForm" class="lead-form" novalidate>
+      <header class="lead-panel__head">
+        <h2 id="panelTitle">Lead hinzufügen</h2>
+        <button type="button" class="icon-btn" id="panelCloseBtn" aria-label="Schließen">×</button>
+      </header>
+
+      <div class="lead-panel__body">
+        <div class="image-import" id="imageImport">
+          <input type="file" id="imageImportInput" accept="image/*" hidden>
+          <button type="button" class="btn btn--ghost" id="imageImportBtn">📷 Aus Bild ausfüllen</button>
+          <p class="image-import__hint" id="imageImportHint">Screenshot von Google Maps, Website, Instagram oder Foto einer Visitenkarte. Am Rechner geht auch Einfügen mit Strg/Cmd + V.</p>
+        </div>
+
+        <div class="field">
+          <label for="f-company">Firma <span class="req">*</span></label>
+          <input type="text" id="f-company" name="company" class="input" required autocomplete="off">
+          <p class="field__error" id="companyError" hidden>Bitte eine Firma eintragen.</p>
+        </div>
+
+        <div class="field">
+          <label for="f-contact">Ansprechpartner</label>
+          <input type="text" id="f-contact" name="contact" class="input" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <div class="field__labelrow">
+            <label for="f-website">Aktuelle Website</label>
+            <a class="field__help" id="websiteSearchLink" href="#" target="_blank" rel="noopener">Bei Google suchen ↗</a>
+          </div>
+          <input type="url" id="f-website" name="website" class="input" placeholder="https://…" autocomplete="off" inputmode="url">
+        </div>
+
+        <div class="field">
+          <label for="f-draftUrl">Unser Entwurf</label>
+          <input type="url" id="f-draftUrl" name="draftUrl" class="input" placeholder="https://…netlify.app" autocomplete="off" inputmode="url">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-phone">Telefon</label>
+            <input type="tel" id="f-phone" name="phone" class="input" autocomplete="off" inputmode="tel">
+          </div>
+          <div class="field">
+            <label for="f-status">Status</label>
+            <select id="f-status" name="status" class="input input--select"></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-followUpDate">Follow-up Datum</label>
+          <input type="date" id="f-followUpDate" name="followUpDate" class="input">
+          <div class="chips" aria-label="Schnellauswahl Follow-up">
+            <button type="button" class="chip" data-offset="0">Heute</button>
+            <button type="button" class="chip" data-offset="1">Morgen</button>
+            <button type="button" class="chip" data-offset="7">+1 Woche</button>
+            <button type="button" class="chip" data-offset="14">+2 Wochen</button>
+            <button type="button" class="chip chip--muted" data-offset="clear">Entfernen</button>
+          </div>
+          <div id="followUpDone"></div>
+        </div>
+
+        <div class="field field--draft">
+          <label for="f-draftSentDate">Entwurf verschickt am</label>
+          <input type="date" id="f-draftSentDate" name="draftSentDate" class="input">
+          <div class="chips chips--draft" aria-label="Schnellauswahl Entwurf verschickt">
+            <button type="button" class="chip" data-draft="0">Heute</button>
+            <button type="button" class="chip" data-draft="-1">Gestern</button>
+            <button type="button" class="chip chip--muted" data-draft="clear">Entfernen</button>
+          </div>
+          <div class="auto-dates" id="autoDates" aria-live="polite"></div>
+          <input type="hidden" name="callDoneFor">
+          <input type="hidden" name="callDoneOn">
+          <input type="hidden" name="followUpDoneFor">
+          <input type="hidden" name="followUpDoneOn">
+        </div>
+
+        <div class="field">
+          <label for="f-notes">Notizen</label>
+          <textarea id="f-notes" name="notes" class="input input--textarea" rows="7"></textarea>
+        </div>
+
+        <p class="lead-panel__meta" id="panelMeta"></p>
+      </div>
+
+      <footer class="lead-panel__foot">
+        <button type="button" class="btn btn--danger-ghost" id="panelDeleteBtn" hidden>Löschen</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn--ghost" id="panelCancelBtn">Abbrechen</button>
+        <button type="submit" class="btn btn--primary" id="panelSaveBtn">Lead speichern</button>
+      </footer>
+    </form>
+  </aside>
+
+  <!-- Bestätigungsdialog -->
+  <div class="dialog-backdrop" id="confirmDialog" hidden>
+    <div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="confirmText">
+      <p class="dialog__text" id="confirmText"></p>
+      <p class="dialog__detail" id="confirmDetail" hidden></p>
+      <input type="date" class="input" id="confirmDate" hidden style="margin-top:12px" aria-label="Datum">
+      <div class="dialog__actions">
+        <button type="button" class="btn btn--ghost" id="confirmExtra" hidden></button>
+        <button type="button" class="btn btn--ghost" id="confirmCancel">Abbrechen</button>
+        <button type="button" class="btn btn--danger" id="confirmOk">Löschen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hinweis-Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/js/schedule.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
