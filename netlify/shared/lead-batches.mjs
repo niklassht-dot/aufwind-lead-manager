@@ -7,6 +7,35 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-06-instantly-antworten",
+    leads: [
+      {
+        company: "Kiteschule Rügen",
+        contact: "Tim Dallmann",
+        phone: "+49 157 73990523",
+        website: "https://www.kiteschule-ruegen.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 06.11.2026: „Moin Niklas :) endlich mal ein Local! Klar – gerne, schau ich mir gerne an.“ → sehr positiv, Local-Bonus nutzen.\nKiteschule auf Rügen + Kiteclub in Sri Lanka (kiteclub-kalpitiya.com). Buchung läuft über eigene App: getstoked.web.app/book. Slogan „GET STOKED“.\nE-Mail: info@kiteschule-ruegen.de"
+      },
+      {
+        company: "Reethäuser auf Rügen (Rohrhus Service- und Vermittlungs GmbH)",
+        contact: "Rainer Behling (GF)",
+        phone: "038308 5480",
+        website: "https://www.rohrhus-ruegen.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 06.11.2026: „Ja gerne“.\nVermietung von Reetdach-Ferienhäusern auf Mönchgut (auch über Booking/Expedia gelistet).\nDorfstr. 07, 18586 Mönchgut\nE-Mail: kontakt@rohrhus-ruegen.de · ruegen-rohrhus@t-online.de"
+      },
+      {
+        company: "igroup Internetagentur",
+        contact: "Nikolai Tauscher (Geschäftsführung)",
+        phone: "+49 7253 9875600",
+        website: "https://www.i-group.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 06.11.2026: „Sehr gerne, ab dafür mit dem Entwurf, schick mal rüber, wir sind gespannt, wieviel mehr da geht 😊👍“\nAchtung: selbst Webdesign-Agentur (Bad Schönborn, BW) → Entwurf muss technisch/gestalterisch klar überzeugen.\nE-Mail: n.tauscher@i-group.de · info@i-group.de · facebook.com/igroup.internetagentur"
+      }
+    ]
+  },
+  {
     id: "2026-11-05-blumencafe-ruegen",
     leads: [
       {
