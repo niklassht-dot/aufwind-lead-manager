@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-06-pieper-catering",
+    leads: [
+      {
+        company: "Pieper Catering",
+        contact: "René Pieper",
+        phone: "03821 7098010",
+        website: "https://www.pieper-catering.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 06.11.2026: „Sie sind wirklich hartnäckig… Wenn es Sie glücklich macht, schicken Sie mir gern Ihren unverbindlichen Entwurf.“ → eher skeptisch, Entwurf muss sofort überzeugen.\nAm Bleicherberg 1a, 18311 Ribnitz-Damgarten\nE-Mail: info@pieper-catering.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-06-instantly-antworten-2",
     leads: [
       {
