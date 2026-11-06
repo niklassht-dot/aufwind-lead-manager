@@ -7,6 +7,35 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-06-instantly-antworten-2",
+    leads: [
+      {
+        company: "Dog Working Team Hundeschule",
+        contact: "Antje Kretschmann",
+        phone: "",
+        website: "https://www.dog-working-team.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 06.11.2026: „Den Entwurf schaue ich mir gern an, sofern er kostenlos ist. Den Preis für eine neue Seite hätte ich auch gern gleich gewusst.“ → antworten: Entwurf kostenlos + Preis nennen.\nTelefon/Ort nicht gefunden – beim Antworten erfragen.\nE-Mail: info@dog-working-team.de"
+      },
+      {
+        company: "Tischlerei Salzwedel",
+        contact: "Dirk Salzwedel",
+        phone: "0381 6006913",
+        website: "https://www.tischlerei-salzwedel.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 06.11.2026: „Ich würde mir Ihren Entwurf mal unverbindlich ansehen. Grüße aus Bentwisch.“\nAm Umspannwerk 2, 18182 Bentwisch\nE-Mail: info@tischlerei-salzwedel.de"
+      },
+      {
+        company: "Bauservice Nord GmbH",
+        contact: "Felix Puschmann (GF)",
+        phone: "0385 6173974",
+        website: "https://www.bauservice-nord.com",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 06.11.2026: „Moin, na ich bin gespannt, gern her damit.“\nWerkstraße 305, 19061 Schwerin · Mobil 0151 15150120 · Fax 0385 6173976 · HRB 9338 AG Schwerin\nE-Mail: info@bauservice-nord.com"
+      }
+    ]
+  },
+  {
     id: "2026-11-06-instantly-antworten",
     leads: [
       {
