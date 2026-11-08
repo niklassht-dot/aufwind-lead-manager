@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-08-fahrradverleih-garz",
+    leads: [
+      {
+        company: "Fahrradverleih Garz",
+        contact: "",
+        phone: "",
+        website: "https://www.mein-fahrradverleih.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort (Wochenende 07./08.11.2026): „Ja schick gerne rüber“.\nFahrradverleih in Garz (Rügen). Telefon und Ansprechpartner nicht gefunden – beim Entwurf-Versand erfragen bzw. im Impressum der Website nachsehen.\nE-Mail: kontakt@mein-fahrradverleih.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-06-pieper-catering",
     leads: [
       {
