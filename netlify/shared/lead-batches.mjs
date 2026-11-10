@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-10-bmb-stralsund",
+    leads: [
+      {
+        company: "Bau- und Montagebetrieb Reich (BMB Stralsund)",
+        contact: "Thomas Reich (staatl. gepr. Bautechniker)",
+        phone: "0176 40553731",
+        website: "https://www.bmb-stralsund.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 10.11.2026: „Wir können einen Termin vereinbaren und dann dürfen Sie mich überzeugen.“ → Termin vorschlagen, Entwurf zum Termin mitbringen.\nTribseer Wiesen 52, Stralsund\nE-Mail: t.reich@bmb-stralsund.de · info@bmb-stralsund.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-08-fahrradverleih-garz",
     leads: [
       {
