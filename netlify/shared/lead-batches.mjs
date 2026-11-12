@@ -7,6 +7,24 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-12-echte-websites",
+    update: true,
+    leads: [
+      {
+        company: "Global Fusion Food GmbH",
+        phone: "0385 20096306",
+        website: "https://www.schreibers-schwerin.de",
+        notes: "Echte Website gefunden: Global Fusion Food GmbH betreibt das **Restaurant Schreiber's** (Restaurant · Café · Bar), Buschstraße 5, 19053 Schwerin – schreibers-schwerin.de, Instagram @schreibersschwerin. Tel. Restaurant 0385 20096306, mobil (Seham Lahdo) 0176 44939787."
+      },
+      {
+        company: "Café Gumpfer",
+        phone: "03831 285923",
+        website: "https://www.gumpfer.de",
+        notes: "Website bestätigt: gumpfer.de (Café Gumpfer Stralsund + Sassnitz). Betreiber: Rügen Café GmbH, Wlatislawstr. 25, 18437 Stralsund. Café: Am Ozeaneum, täglich 9–18 Uhr, Reservierung nur telefonisch. Kontakt mobil 0171 7204009. Seite wirkt technisch veraltet (Slider Revolution, Bilder von 2019, Bestellungen nur per Formular/Überweisung)."
+      }
+    ]
+  },
+  {
     // Nur ergänzen: Telefon/Website in leere Felder, Status bleibt wie eingestellt
     id: "2026-11-12-ergaenzung-telefon-website",
     update: true,
