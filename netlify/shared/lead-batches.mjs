@@ -7,6 +7,27 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-12-tmbau-glh",
+    leads: [
+      {
+        company: "TM Bau Fliesenlegermeister T. Metzenthin",
+        contact: "T. Metzenthin",
+        phone: "",
+        website: "https://www.tmbau-fliesen.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 12.11.2026: „Ja schicke gerne den Entwurf rüber.“\nFliesenlegermeister. Telefon/Ort nicht gefunden – im Impressum nachsehen.\nE-Mail: info@tmbau-fliesen.de · privat: tmetzenthin@icloud.com"
+      },
+      {
+        company: "GLH Schwerin",
+        contact: "Sven Jäntsch (Geschäftsführer)",
+        phone: "",
+        website: "https://www.glh-schwerin.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 12.11.2026: „Ja. Aber nur wenn das Ganze unverbindlich und kostenlos ist. Ich melde mich im Anschluss, wenn ich der Meinung bin, dass ich das Projekt mit euch weiterverfolgen möchte.“ → kostenlos/unverbindlich bestätigen, dann Entwurf schicken.\nBranche, Telefon und Adresse nicht gefunden – im Impressum nachsehen.\nE-Mail: info@glh-schwerin.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-10-bmb-stralsund",
     leads: [
       {
