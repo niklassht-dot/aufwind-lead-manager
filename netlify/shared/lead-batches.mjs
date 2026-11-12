@@ -14,7 +14,7 @@ export const LEAD_BATCHES = [
         company: "Global Fusion Food GmbH",
         phone: "0385 20096306",
         website: "https://www.schreibers-schwerin.de",
-        notes: "Echte Website gefunden: Global Fusion Food GmbH betreibt das **Restaurant Schreiber's** (Restaurant · Café · Bar), Buschstraße 5, 19053 Schwerin – schreibers-schwerin.de, Instagram @schreibersschwerin. Tel. Restaurant 0385 20096306, mobil (Seham Lahdo) 0176 44939787."
+        notes: "Echte Website gefunden: Global Fusion Food GmbH betreibt das Restaurant Schreiber's (Restaurant · Café · Bar), Buschstraße 5, 19053 Schwerin – schreibers-schwerin.de, Instagram @schreibersschwerin. Tel. Restaurant 0385 20096306, mobil (Seham Lahdo) 0176 44939787."
       },
       {
         company: "Café Gumpfer",
