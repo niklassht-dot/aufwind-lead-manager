@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-12-cafe-gumpfer",
+    leads: [
+      {
+        company: "Café Gumpfer",
+        contact: "",
+        phone: "",
+        website: "",
+        status: "Anrufen",
+        notes: "Café in der Altstadt: Kaffeespezialitäten, hausgemachter Kuchen, großes Frühstücks- und Brunchangebot.\nNeue Badenstraße 4, 18439 Stralsund\nKeine eigene Website gefunden (nur Einträge auf Speisekarten-/Cafe-Portalen) → guter Kandidat für einen Entwurf. Telefon nicht gefunden – vor Ort vorbeischauen oder Google-Maps-Eintrag prüfen."
+      }
+    ]
+  },
+  {
     id: "2026-11-12-global-fusion-food",
     leads: [
       {
