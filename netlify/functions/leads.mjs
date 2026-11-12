@@ -119,14 +119,15 @@ function applyBatches(doc) {
         return k && key && (k === key || (Math.min(k.length, key.length) >= 6 && (k.startsWith(key) || key.startsWith(k))));
       });
       if (existing) {
-        // schon vorhanden: Status setzen, leere Felder ergänzen, Notiz anhängen
-        existing.status = raw.status || existing.status;
+        // schon vorhanden: Status setzen (nicht bei reinen Ergänzungs-Paketen),
+        // leere Felder ergänzen, Notiz anhängen
+        if (!batch.update) existing.status = raw.status || existing.status;
         for (const f of ["contact", "phone", "website"]) if (!existing[f] && raw[f]) existing[f] = raw[f];
         if (raw.notes && !String(existing.notes || "").includes(raw.notes.split("\n")[0])) {
           existing.notes = [existing.notes, raw.notes].filter(Boolean).join("\n\n");
         }
         existing.updatedAt = now;
-      } else {
+      } else if (!batch.update) {
         doc.leads.push(normalizeLead({ ...raw, createdAt: now, updatedAt: now }, now));
       }
     }

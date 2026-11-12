@@ -7,6 +7,34 @@
 
 export const LEAD_BATCHES = [
   {
+    // Nur ergänzen: Telefon/Website in leere Felder, Status bleibt wie eingestellt
+    id: "2026-11-12-ergaenzung-telefon-website",
+    update: true,
+    leads: [
+      {
+        company: "Café Gumpfer",
+        phone: "03831 285923",
+        website: "https://www.gumpfer.de",
+        notes: "Recherche: Tel. 03831 285923 (laut Tripadvisor), E-Mail post@gumpfer.de. Lage laut Tripadvisor „Beim Ozeaneum“ (Hafen), laut Café-Portalen Neue Badenstraße 4. Website gumpfer.de aus der E-Mail-Domain abgeleitet, nicht geprüft."
+      },
+      {
+        company: "Global Fusion Food GmbH",
+        notes: "Recherche: Restaurant mit Grillspezialitäten, orientalischen und mediterranen Gerichten + Lebensmittelhandel. Buschstr. 5, 19053 Schwerin (HRB 13679, AG Schwerin). Laut Handelsregister GF: Seham Lahdo. Keine Website und keine Telefonnummer gefunden."
+      },
+      {
+        company: "GLH Schwerin",
+        phone: "0385 6767958",
+        website: "https://www.glh-schwerin.de",
+        notes: "Recherche: Garten-, Landschaftsbau & Holzfachhandel Schwerin GmbH · Görrieser Weg 1a, 19061 Schwerin · Tel. 0385 6767958. Zweite Seite für Carports: glh-carport.de."
+      },
+      {
+        company: "TM Bau Fliesenlegermeister T. Metzenthin",
+        website: "https://tmbau-fliesen.de",
+        notes: "Recherche: Fliesen, Platten, Naturstein, fugenlose Bäder, Trockenbau · Schwerin und Umgebung (100 km). Auf der Website steht keine Telefonnummer und keine Adresse."
+      }
+    ]
+  },
+  {
     id: "2026-11-12-cafe-gumpfer",
     leads: [
       {
