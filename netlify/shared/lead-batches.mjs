@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-12-global-fusion-food",
+    leads: [
+      {
+        company: "Global Fusion Food GmbH",
+        contact: "Sefik Ince",
+        phone: "",
+        website: "",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 12.11.2026: „Entwurf gerne.“\nWebsite, Telefon und Ort nicht gefunden – aus der ursprünglichen Kampagne (Instantly) nachtragen.\nE-Mail: globalfusionfood.gmbh@gmail.com"
+      }
+    ]
+  },
+  {
     id: "2026-11-12-tmbau-glh",
     leads: [
       {
