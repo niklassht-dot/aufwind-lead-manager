@@ -1325,6 +1325,7 @@
 
   function openPanel(lead = null, { focus = "company" } = {}) {
     closeRowMenu();
+    document.dispatchEvent(new CustomEvent("aufwind:panel-open", { detail: { lead } }));
     setImageHint(IMAGE_HINT_DEFAULT);
     ui.editingId = lead ? lead.id : null;
     ui.lastFocus = document.activeElement;
@@ -2133,6 +2134,7 @@
     startPolling();
     initPush();
     openLeadFromUrl();
+    document.dispatchEvent(new CustomEvent("aufwind:unlocked"));
   }
 
   function clearSensitiveDom() {
@@ -2149,6 +2151,7 @@
     cache.version = 0;
     cache.loaded = false;
     clearSensitiveDom();
+    document.dispatchEvent(new CustomEvent("aufwind:locked"));
     document.body.classList.add("is-locked");
     els.pinInput.value = "";
     els.pinInput.focus();
@@ -2205,6 +2208,19 @@
     if (savedPin) unlockWith(savedPin);
     else els.pinInput.focus();
   }
+
+  /* Schnittstelle für den Kalender (calendar.js) */
+  window.AufwindApp = {
+    api,
+    getLeads: () => getLeads(),
+    openLead: (id) => {
+      const lead = getLeads().find((l) => l.id === id);
+      if (lead) openPanel(lead);
+    },
+    toast: showToast,
+    escapeHTML,
+    todayISO
+  };
 
   initLock();
 })();

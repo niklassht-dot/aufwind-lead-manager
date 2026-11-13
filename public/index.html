@@ -105,6 +105,9 @@
     <!-- Tages-To-do-Liste -->
     <section class="today" id="todayPanel" aria-label="Heute zu tun"></section>
 
+    <!-- Kalender (Termine) -->
+    <section class="cal" id="calendarPanel" aria-label="Kalender"></section>
+
     <!-- Desktop: Tabelle -->
     <div class="table-wrap">
       <table class="lead-table">
@@ -223,6 +226,8 @@
           <input type="hidden" name="followUpDoneOn">
         </div>
 
+        <div class="field" id="leadAppointments"></div>
+
         <div class="field">
           <label for="f-notes">Notizen</label>
           <textarea id="f-notes" name="notes" class="input input--textarea" rows="7"></textarea>
@@ -259,5 +264,68 @@
 
   <script src="assets/js/schedule.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <!-- Termin-Dialog -->
+  <div class="dialog-backdrop" id="apptDialog" hidden>
+    <form class="dialog appt-dialog" id="apptForm" role="dialog" aria-modal="true" aria-labelledby="apptTitle" novalidate>
+      <h2 class="appt-dialog__title" id="apptTitle">Termin</h2>
+      <div class="field">
+        <label for="a-lead">Lead</label>
+        <select id="a-lead" name="leadId" class="input input--select"></select>
+      </div>
+      <div class="field">
+        <label for="a-title">Titel <span class="muted">(optional)</span></label>
+        <input id="a-title" name="title" class="input" autocomplete="off" placeholder="z. B. Entwurf vorstellen">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="a-date">Datum <span class="req">*</span></label>
+          <input type="date" id="a-date" name="date" class="input" required>
+        </div>
+        <div class="field">
+          <label for="a-time">Uhrzeit</label>
+          <input type="time" id="a-time" name="time" class="input" step="300">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="a-type">Art</label>
+          <select id="a-type" name="type" class="input input--select">
+            <option>Persönliches Gespräch</option><option>Telefonat</option><option>Videocall</option><option>Entwurf vorstellen</option><option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="a-status">Status</label>
+          <select id="a-status" name="status" class="input input--select">
+            <option value="vorgemerkt">vorgemerkt</option><option value="bestätigt">bestätigt</option><option value="erledigt">erledigt</option><option value="abgesagt">abgesagt</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="a-duration">Dauer</label>
+          <select id="a-duration" name="duration" class="input input--select">
+            <option value="15">15 Min</option><option value="30">30 Min</option><option value="45">45 Min</option><option value="60" selected>1 Std</option><option value="90">1,5 Std</option><option value="120">2 Std</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="a-location">Ort</label>
+          <input id="a-location" name="location" class="input" autocomplete="off">
+        </div>
+      </div>
+      <div class="field">
+        <label for="a-notes">Notizen</label>
+        <textarea id="a-notes" name="notes" class="input input--textarea" rows="3"></textarea>
+      </div>
+      <label class="appt-remind"><input type="checkbox" name="remind" checked> Push-Erinnerung (Vorabend, morgens, 1 Std vorher)</label>
+      <div class="dialog__actions">
+        <button type="button" class="btn btn--danger-ghost" id="apptDelete" hidden>Löschen</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn--ghost" id="apptCancel">Abbrechen</button>
+        <button type="submit" class="btn btn--primary">Speichern</button>
+      </div>
+    </form>
+  </div>
+  <script src="assets/js/calendar.js"></script>
 </body>
 </html>
