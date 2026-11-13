@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-13-willys-steakhaus",
+    leads: [
+      {
+        company: "Willy's Steakhaus am Markt (Märchenhotel Bergen)",
+        contact: "B. Mehlberg (Inhaber)",
+        phone: "03838 2010669",
+        website: "https://www.maerchenhotel-ruegen.de/restaurant.html",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 13.11.2026: „Bitte senden Sie uns den Entwurf mal rüber. Wir sehen uns diesen mal an.“\nSteakhaus im Märchenhotel Bergen – gleicher Inhaber, Markt 28, 18528 Bergen auf Rügen. Restaurant hat keine eigene Website, nur eine Unterseite der Hotel-Website.\nAnsatzpunkte: Öffnungszeiten nur für einzelne Monate gepflegt, Tippfehler, Stand der Seite etwa 2019/2020. Entwurf ggf. für Hotel + Steakhaus zusammen denken.\nE-Mail: kontakt@maerchenhotel-ruegen.de · Fax 03838 2010668"
+      }
+    ]
+  },
+  {
     id: "2026-11-13-clean-shine",
     leads: [
       {
