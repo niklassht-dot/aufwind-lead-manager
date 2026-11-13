@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-13-tas-baudienstleistung",
+    leads: [
+      {
+        company: "TAS Baudienstleistung",
+        contact: "Muslum Tas",
+        phone: "",
+        website: "",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 13.11.2026: „Ja, Sie können mir den unverbindlichen Entwurf gerne zuschicken. Ist der Entwurf komplett kostenlos und mit keinen weiteren Verpflichtungen verbunden?“ → kurz bestätigen (kostenlos, unverbindlich), dann Entwurf schicken.\nWebsite, Telefon und Ort nicht gefunden – aus der Instantly-Kampagne nachtragen.\nE-Mail: tasm26772@gmail.com"
+      }
+    ]
+  },
+  {
     id: "2026-11-13-willys-steakhaus",
     leads: [
       {
