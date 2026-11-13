@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-13-clean-shine",
+    leads: [
+      {
+        company: "Clean Shine (Reinigung)",
+        contact: "Dana Ance Gintere",
+        phone: "",
+        website: "",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 13.11.2026: „Danke für die Nachricht! Schick mir den Entwurf gerne per E-Mail. Ich schaue ihn mir gerne an.“\nVermutlich Reinigungsfirma. Möglicher Treffer: „Clean & Shine Rostock“ (clean-and-shine-ostsee.com) – konnte die Seite nicht öffnen, also nicht bestätigt. Website/Telefon aus der ursprünglichen Instantly-Kampagne nachtragen.\nE-Mail: cleanshineag@gmail.com"
+      }
+    ]
+  },
+  {
     id: "2026-11-12-echte-websites",
     update: true,
     leads: [
