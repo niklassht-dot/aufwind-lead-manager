@@ -262,6 +262,7 @@
       followUpDoneFor: normalizeDate(r.followUpDoneFor),
       followUpDoneOn: normalizeDate(r.followUpDoneOn),
       notes: String(r.notes ?? ""),
+      hot: r.hot === true || r.hot === "true",
       createdAt: typeof r.createdAt === "string" && r.createdAt ? r.createdAt : now,
       updatedAt: typeof r.updatedAt === "string" && r.updatedAt ? r.updatedAt : now
     };
@@ -272,7 +273,7 @@
     return normalizeLead({ ...data, id: uid(), createdAt: now, updatedAt: now });
   }
 
-  const EDITABLE_FIELDS = ["company", "contact", "phone", "website", "draftUrl", "status", "followUpDate", "draftSentDate",
+  const EDITABLE_FIELDS = ["hot", "company", "contact", "phone", "website", "draftUrl", "status", "followUpDate", "draftSentDate",
     "callDoneFor", "callDoneOn", "followUpDoneFor", "followUpDoneOn", "notes"];
 
   function pickEditable(updates) {
@@ -774,10 +775,12 @@
   function sortLeads(leads, nrMap) {
     const today = todayISO();
     const byNr = (a, b) => nrMap.get(a.id) - nrMap.get(b.id);
+    const hotFirst = (a, b) => (b.hot ? 1 : 0) - (a.hot ? 1 : 0); // 🔥 immer ganz oben
     const list = [...leads];
 
     if (!ui.sortKey) {
       return list.sort((a, b) =>
+        hotFirst(a, b) ||
         defaultRank(a, today) - defaultRank(b, today) ||
         compareDates(nextTaskDate(a, today), nextTaskDate(b, today)) ||
         byNr(a, b)
@@ -786,6 +789,8 @@
 
     const dir = ui.sortDir;
     return list.sort((a, b) => {
+      const hot = hotFirst(a, b);
+      if (hot) return hot;
       let cmp = 0;
       if (ui.sortKey === "company") {
         cmp = collator.compare(a.company, b.company);
@@ -871,12 +876,20 @@
     return links.join("");
   }
 
+  /** Flammen-Schalter: heißer Lead (steht immer ganz oben). */
+  function hotBtnHTML(lead) {
+    const on = Boolean(lead.hot);
+    return `<button type="button" class="hot-btn${on ? " is-on" : ""}" data-action="hot" aria-pressed="${on}" title="${on ? "Heißer Lead – antippen zum Ausschalten" : "Als heißen Lead markieren"}" aria-label="${on ? "Heißer Lead, ausschalten" : "Als heißen Lead markieren"}: ${escapeHTML(lead.company)}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.2 2.5c.4 2.7-.8 4.5-2.3 6.2C8.4 10.4 6.8 12.2 6.8 15a5.2 5.2 0 0 0 10.4.3c.1-1.9-.7-3.4-1.6-4.6-.3 1.3-1 2.2-2 2.6.6-3.6-.4-7.3-1.4-10.8z"/><path class="hot-btn__core" d="M12 21a2.6 2.6 0 0 1-2.6-2.6c0-1.6 1.2-2.4 2-3.6.3 1 .9 1.5 1.6 1.7.1-.6.4-1.1.9-1.5.5.8.8 1.7.7 2.6A2.6 2.6 0 0 1 12 21z"/></svg>
+    </button>`;
+  }
+
   function rowHTML(lead, nr, today) {
     return `
-      <tr data-id="${escapeHTML(lead.id)}">
+      <tr data-id="${escapeHTML(lead.id)}"${lead.hot ? ' class="is-hot"' : ""}>
         <td class="col-nr">${pad(nr)}</td>
         <td>
-          <div class="company">${escapeHTML(lead.company)}</div>
+          <div class="company company--with-hot">${hotBtnHTML(lead)}<span>${escapeHTML(lead.company)}</span></div>
           ${lead.contact ? `<div class="contact">${escapeHTML(lead.contact)}</div>` : ""}
           ${ui.sortKey === "createdAt" && lead.createdAt ? `<div class="contact added-on">hinzugefügt ${escapeHTML(formatDateTime(lead.createdAt).split(",")[0])}</div>` : ""}
         </td>
@@ -897,8 +910,8 @@
     const phone = lead.phone ? phoneHTML(lead.phone) : "";
     const meta = date || phone ? `<div class="lead-item__meta">${date}${phone}</div>` : "";
     return `
-      <li class="lead-item" data-id="${escapeHTML(lead.id)}" tabindex="0">
-        <div class="company">${escapeHTML(lead.company)}</div>
+      <li class="lead-item${lead.hot ? " is-hot" : ""}" data-id="${escapeHTML(lead.id)}" tabindex="0">
+        <div class="company company--with-hot">${hotBtnHTML(lead)}<span>${escapeHTML(lead.company)}</span></div>
         ${lead.contact ? `<div class="contact">${escapeHTML(lead.contact)}</div>` : ""}
         ${ui.sortKey === "createdAt" && lead.createdAt ? `<div class="contact added-on">hinzugefügt ${escapeHTML(formatDateTime(lead.createdAt).split(",")[0])}</div>` : ""}
         <div class="lead-item__status"><span class="status-pill ${toneClass(lead.status)}">${escapeHTML(lead.status)}</span></div>
@@ -1467,6 +1480,18 @@
   }
 
   /** Schnelle Änderung (Status, erledigt) direkt aus der Liste. */
+  async function toggleHot(id) {
+    const lead = getLead(id);
+    if (!lead) return;
+    try {
+      const res = await updateLead(id, { hot: !lead.hot }, { force: true });
+      if (res.notFound) showToast("Der Lead wurde inzwischen gelöscht.", true, 4000);
+      else if (res.lead) showToast(res.lead.hot ? `🔥 „${res.lead.company}“ ist heiß – steht jetzt ganz oben` : `„${res.lead.company}“ nicht mehr heiß`);
+    } catch (err) {
+      showSaveError(err);
+    }
+  }
+
   async function quickUpdate(id, updates, successMessage) {
     try {
       const res = await updateLead(id, updates);
@@ -1700,6 +1725,7 @@
       if (!id) return;
       if (e.target.closest("a, select, label")) return; // Anruf-Link & Status-Select
       const actionEl = e.target.closest("[data-action]");
+      if (actionEl && actionEl.dataset.action === "hot") { e.stopPropagation(); toggleHot(id); return; }
       if (actionEl && actionEl.dataset.action === "menu") {
         e.stopPropagation();
         openRowMenu(actionEl, id);
@@ -1719,6 +1745,7 @@
     // Mobile-Liste
     els.list.addEventListener("click", (e) => {
       if (e.target.closest("a")) return;
+      if (e.target.closest('[data-action="hot"]')) { toggleHot(leadIdFrom(e.target)); return; }
       const id = leadIdFrom(e.target);
       const lead = id && getLead(id);
       if (lead) openPanel(lead);

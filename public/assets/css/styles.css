@@ -1087,3 +1087,34 @@ body.is-locked .fab { display: none !important; }
 .appt-remind { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); }
 .appt-dialog .dialog__actions { align-items: center; }
 .muted { color: var(--muted); font-weight: 400; }
+
+/* ==========================================================
+   🔥 Heiße Leads
+   ========================================================== */
+.company--with-hot { display: flex; align-items: center; gap: 6px; }
+.company--with-hot > span { min-width: 0; }
+.hot-btn {
+  flex: none;
+  width: 28px; height: 28px;
+  margin-left: -4px;
+  display: grid; place-items: center;
+  border: 0; border-radius: 8px; background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--tr), transform 0.15s ease;
+}
+.hot-btn:hover { background: var(--surface-2); }
+.hot-btn:active { transform: scale(0.88); }
+.hot-btn svg { width: 19px; height: 19px; overflow: visible; }
+.hot-btn svg path { fill: none; stroke: #aab0aa; stroke-width: 1.6; stroke-linejoin: round; transition: fill 0.2s, stroke 0.2s; }
+.hot-btn:hover svg path { stroke: #e8702a; }
+.hot-btn .hot-btn__core { opacity: 0; }
+.hot-btn.is-on svg path { fill: #f26a1b; stroke: #e0560e; }
+.hot-btn.is-on .hot-btn__core { opacity: 1; fill: #ffd04a; stroke: none; }
+.hot-btn.is-on svg { animation: hotFlicker 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes hotFlicker { 0%, 100% { transform: scale(1) rotate(0); } 40% { transform: scale(1.06, 0.97) rotate(-2deg); } 70% { transform: scale(0.98, 1.04) rotate(1.5deg); } }
+@media (prefers-reduced-motion: reduce) { .hot-btn.is-on svg { animation: none; } }
+
+tr.is-hot td { background: #fff6ef; }
+tr.is-hot td:first-child { box-shadow: inset 3px 0 0 #f26a1b; }
+.lead-item.is-hot { background: #fff6ef; box-shadow: inset 3px 0 0 #f26a1b; }

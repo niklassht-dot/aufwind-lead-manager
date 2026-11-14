@@ -42,7 +42,8 @@ const FIELD_LIMITS = {
   callDoneOn: 10,
   followUpDoneFor: 10,
   followUpDoneOn: 10,
-  notes: 20000
+  notes: 20000,
+  hot: 1          // 🔥 heißer Lead (true/false)
 };
 const EDITABLE_FIELDS = Object.keys(FIELD_LIMITS);
 
@@ -79,6 +80,7 @@ function normalizeDate(value) {
 }
 
 function cleanField(key, value) {
+  if (key === "hot") return value === true || value === "true" || value === "1" || value === 1;
   let v = String(value ?? "");
   if (key !== "notes") v = v.trim();
   if (key === "website" || key === "draftUrl") v = normalizeUrl(v);
