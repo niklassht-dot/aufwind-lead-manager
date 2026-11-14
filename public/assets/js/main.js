@@ -1100,7 +1100,9 @@
   function formValues() {
     const fd = new FormData(els.form);
     const out = {};
-    EDITABLE_FIELDS.forEach((key) => { out[key] = String(fd.get(key) ?? ""); });
+    // „hot“ (Flamme) steht nicht im Formular und wird hier nie mitgeschickt –
+    // sonst würde Speichern im Formular die Flamme ausschalten.
+    EDITABLE_FIELDS.forEach((key) => { if (key !== "hot") out[key] = String(fd.get(key) ?? ""); });
     out.company = out.company.trim();
     out.contact = out.contact.trim();
     out.phone = out.phone.trim();
