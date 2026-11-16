@@ -7,6 +7,20 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-16-yogazentrum-ruegen",
+    leads: [
+      {
+        company: "Yogazentrum Rügen",
+        contact: "Katharina Jurack",
+        phone: "+49 172 3415020",
+        website: "https://www.yogazentrum-ruegen.de",
+        status: "Entwurf in Arbeit",
+        followUpDate: "2026-11-23",
+        notes: "Mail-Antwort 16.11.2026: „Gerne könnt Ihr uns mal eure Leistungen präsentieren. Aktuell befinden wir uns im Urlaub. Meldet euch gerne in der nächsten Woche.“ → ab Mo 23.11. melden (Follow-up gesetzt), Entwurf bis dahin fertig.\nYoga, Massage, Yoga-Reisen, Gästehaus · Hof Kranichstein, Silenz 9, 18569 Kluis (Rügen). Website-Logo von 2020, Seite wirkt technisch älter.\nE-Mail: kontakt@yogazentrum-ruegen.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-13-tas-baudienstleistung",
     leads: [
       {
