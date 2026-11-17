@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-17-fit-aktiv-parchim",
+    leads: [
+      {
+        company: "Fit-Aktiv Parchim",
+        contact: "Matthias Probst",
+        phone: "0176 10300738",
+        website: "https://www.fit-aktiv.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 17.11.2026 auf „Der Entwurf ist fertig. Dürfen wir Ihnen kurz …“: „Gerne 😊 Für Rückfragen stehe ich gerne zur Verfügung.“ → Entwurf-Link schicken, danach kurz anrufen.\nFitnessstudio-Kette FitAktiv mit Studios in Parchim, Lübz und Mirow (Studio Parchim nach Großbrand 2022 wieder aufgebaut).\nE-Mail: info@fit-aktiv.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-16-yogazentrum-ruegen",
     leads: [
       {
