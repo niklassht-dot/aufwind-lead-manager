@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-18-immo-konzepte",
+    leads: [
+      {
+        company: "IMMO-KONZEPTE Immobilien GmbH",
+        contact: "Carsten C. Rönndahl (Geschäftsführer)",
+        phone: "0385 30200611",
+        website: "https://www.immo-konzepte.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 18.11.2026: „Sie können mir gerne den fertigen Entwurf zur Kenntnis geben.“ → Entwurf-Link schicken.\nImmobilienmakler · Jahnstraße 10, 19055 Schwerin · Fax 0385 30200622\nE-Mail: carsten.roenndahl@immo-konzepte.de · info@immo-konzepte.de · Facebook: ImmoKonzepteImmobilienGmbH"
+      }
+    ]
+  },
+  {
     id: "2026-11-17-fit-aktiv-parchim",
     leads: [
       {
