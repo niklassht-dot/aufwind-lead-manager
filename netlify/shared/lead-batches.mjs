@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-20-gatecom-germany",
+    leads: [
+      {
+        company: "GateCom Germany",
+        contact: "",
+        phone: "",
+        website: "https://www.gatecom-germany.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 20.11.2026: „Moin moin, dann lass mal kostenfrei sehen. Stürmische Grüße“ → Entwurf schicken.\nAnsprechpartner, Branche und Telefon nicht gefunden (Website konnte nicht geöffnet werden; Domain aus der E-Mail abgeleitet) – aus der Instantly-Kampagne nachtragen.\nE-Mail: info@gatecom-germany.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-18-immo-konzepte",
     leads: [
       {
