@@ -7,6 +7,17 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-22-gatecom-ergaenzung",
+    update: true,
+    leads: [
+      {
+        company: "GateCom Germany",
+        contact: "Benjamin Ruhnau (Inhaber)",
+        notes: "Ergänzung: Firmenname GATECOM TBR – Industrie- & Garagentore, Inhaber Benjamin Ruhnau, seit 2008. Telefon/Adresse noch offen."
+      }
+    ]
+  },
+  {
     id: "2026-11-22-halbinsel-peenemuende",
     leads: [
       {
