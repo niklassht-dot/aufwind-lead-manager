@@ -125,6 +125,12 @@ function applyBatches(doc) {
         // leere Felder ergänzen, Notiz anhängen
         if (!batch.update) existing.status = raw.status || existing.status;
         for (const f of ["contact", "phone", "website"]) if (!existing[f] && raw[f]) existing[f] = raw[f];
+        // „set“: diese Felder werden gezielt überschrieben (z. B. Entwurf-Link + Versanddatum)
+        if (raw.set && typeof raw.set === "object") {
+          for (const [f, v] of Object.entries(raw.set)) {
+            if (f in FIELD_LIMITS) existing[f] = cleanField(f, v);
+          }
+        }
         if (raw.notes && !String(existing.notes || "").includes(raw.notes.split("\n")[0])) {
           existing.notes = [existing.notes, raw.notes].filter(Boolean).join("\n\n");
         }

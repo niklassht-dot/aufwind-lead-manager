@@ -7,6 +7,33 @@
 
 export const LEAD_BATCHES = [
   {
+    // Entwürfe verschickt am 22.11.2026 → Link + Versanddatum + Status setzen (Anruf 5 Werktage später)
+    id: "2026-11-22-entwuerfe-verschickt",
+    update: true,
+    leads: [
+      {
+        company: "Halbinsel Peenemünde (Halbinselbetriebsgesellschaft mbH)",
+        set: { draftUrl: "https://halbinsel-peenemuende.netlify.app/", draftSentDate: "2026-11-22", status: "Entwurf gesendet" }
+      },
+      {
+        company: "GateCom Germany",
+        set: { draftUrl: "https://gatecomtbr.netlify.app/", draftSentDate: "2026-11-22", status: "Entwurf gesendet" }
+      },
+      {
+        company: "IMMO-KONZEPTE Immobilien GmbH",
+        set: { draftUrl: "https://immokonzepte.netlify.app/", draftSentDate: "2026-11-22", status: "Entwurf gesendet" }
+      },
+      {
+        company: "Fit-Aktiv Parchim",
+        set: { draftUrl: "https://fitaktiv.netlify.app/", draftSentDate: "2026-11-22", status: "Entwurf gesendet" }
+      },
+      {
+        company: "Yogazentrum Rügen",
+        set: { draftUrl: "https://yogazentrum.netlify.app/", draftSentDate: "2026-11-22", status: "Entwurf gesendet" }
+      }
+    ]
+  },
+  {
     id: "2026-11-22-antik-kunst-troedel",
     leads: [
       {
