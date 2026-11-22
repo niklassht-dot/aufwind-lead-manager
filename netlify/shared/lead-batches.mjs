@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-22-halbinsel-peenemuende",
+    leads: [
+      {
+        company: "Halbinsel Peenemünde (Halbinselbetriebsgesellschaft mbH)",
+        contact: "Lara Nickel (Verwaltung) · GF Oliver Klotzin",
+        phone: "038371 556623",
+        website: "https://www.halbinsel-peenemuende.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 22.11.2026: „Hallo Niklas, dann zeig mal her!“ → Entwurf schicken.\nFährstraße 9, 17449 Peenemünde (Insel Usedom) · HRB 8532 AG Stralsund · Geschäftsführer: Oliver Klotzin"
+      }
+    ]
+  },
+  {
     id: "2026-11-20-gatecom-germany",
     leads: [
       {
