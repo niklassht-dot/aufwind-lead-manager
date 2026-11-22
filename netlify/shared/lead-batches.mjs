@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-22-antik-kunst-troedel",
+    leads: [
+      {
+        company: "Antik Kunst Trödel",
+        contact: "B. Düsing",
+        phone: "0172 4514884",
+        website: "https://www.world-of-video.de",
+        status: "Anrufen",
+        notes: "Antiquitäten/Trödel · Ringstr. 31, 18528 Bergen auf Rügen · geöffnet bis 21 Uhr.\nAls Website ist world-of-video.de eingetragen – passt nicht zum Namen → Ansatzpunkt: eigene Seite für den Antik-Laden.\nE-Mail: b.duesing@freenet.de (Name „B. Düsing“ aus der E-Mail abgeleitet)"
+      }
+    ]
+  },
+  {
     id: "2026-11-22-gatecom-ergaenzung",
     update: true,
     leads: [
