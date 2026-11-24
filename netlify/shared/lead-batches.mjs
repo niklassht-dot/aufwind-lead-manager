@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-24-ersthelferschule-mv",
+    leads: [
+      {
+        company: "Ersthelferschule MV",
+        contact: "",
+        phone: "",
+        website: "https://www.ersthelferschule-mv.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 24.11.2026 auf „Der Entwurf ist fertig. Dürfen wir Ihnen kurz zeigen …“: „Hallo! Ja, gerne! Gruß“ → Entwurf-Link schicken (Sie-Form, kein Name in der Mail).\nErste-Hilfe-Kurse in MV. Ansprechpartner, Telefon und Ort nicht gefunden (Website aus E-Mail-Domain abgeleitet) – im Impressum nachsehen.\nE-Mail: post@ersthelferschule-mv.de"
+      }
+    ]
+  },
+  {
     // Entwürfe verschickt am 22.11.2026 → Link + Versanddatum + Status setzen (Anruf 5 Werktage später)
     id: "2026-11-22-entwuerfe-verschickt",
     update: true,
