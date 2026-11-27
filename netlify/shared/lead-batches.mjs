@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-27-schoene-freizeit",
+    leads: [
+      {
+        company: "Schoene Freizeit – Surfschule Usedom",
+        contact: "Philipp Schöne M.A.",
+        phone: "+49 179 6653396",
+        website: "https://www.surfschule-usedom.com",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort (Du): „Kannst du gerne tun.“ – mit aktuellem Angebot für den Entwurf:\n• Kitesurfen nur noch mobil in Peenemünde, Lubmin und Ückeritz\n• Wellenreiten ist raus\n• SUP-Verleih nur noch am Pulower See bzw. Herausgabe der SUPs\n• Windsurfen nach Absprache auf dem Pulower See\nInstitut für Trend- und Outdoorsport · zweite Website: schoenefreizeit.de\nE-Mail: info@schoenefreizeit.com"
+      }
+    ]
+  },
+  {
     id: "2026-11-24-ersthelferschule-mv",
     leads: [
       {
