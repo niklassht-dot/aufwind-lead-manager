@@ -7,6 +7,19 @@
 
 export const LEAD_BATCHES = [
   {
+    id: "2026-11-27-jan-boehnke-fotografie",
+    leads: [
+      {
+        company: "Jan Böhnke – Fotografie aus Leidenschaft",
+        contact: "Jan Böhnke",
+        phone: "",
+        website: "https://www.jb-fotografie.de",
+        status: "Entwurf in Arbeit",
+        notes: "Mail-Antwort 27.11.2026 (Sie): „Gern schaue ich mir den Entwurf an. Die Frage ist natürlich, was die Überarbeitung kosten würde, wenn mir der Entwurf gefällt.“ → mit dem Entwurf gleich den Preis nennen.\nFotograf aus Warnemünde. Betreut laut Signatur auch plessentin-dessous.de und parfumerie-plessentin-gmbh.jimdosite.com (Jimdo-Baukasten) → evtl. weitere Aufträge.\nTelefon nicht gefunden.\nE-Mail: janboehnke@freenet.de"
+      }
+    ]
+  },
+  {
     id: "2026-11-27-schoene-freizeit",
     leads: [
       {
